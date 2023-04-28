@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Componente</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <contador value="3" label="1"></contador>
+    </div>
+    <script>
+        Vue.component('contador', {
+            props: ['value', 'label'],
+            data: function () {
+                return {
+                    contador: 0
+                }
+            },
+            template: `
+                <div>
+                    <span> {{ contador }} </span>
+                    <button @click="contador += Number(value)"> +{{label}} </button>
+                    <button @click="contador -= Number(value)"> -{{label}} </button>
+                </div>
+            `,
+        })
+
+        new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+</html>
